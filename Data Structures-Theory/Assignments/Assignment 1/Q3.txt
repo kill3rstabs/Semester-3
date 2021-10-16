@@ -1,14 +1,8 @@
 #include <iostream>
 
 using namespace std;
-class IndexOutOfBoundsException: public exception
-{
-public:
-  virtual const char* what() const throw()
-  {
-    return "My exception happened";
-  }
-};
+class IndexOutOfBoundsException {};
+
 template <class T>
 class DynamicSafe2DArray
 {
@@ -70,17 +64,11 @@ class DynamicSafe2DArray
 
    	T& operator()(int rowIndex, int colIndex)
       {
-      	try{
-      		if (rowIndex < 0 || colIndex < 0 || rowIndex >= row || colIndex >= col)
+      	if (rowIndex < 0 || colIndex < 0 || rowIndex >= row || colIndex >= col)
          	throw IndexOutOfBoundsException();
          else
          	return *(*(data+rowIndex)+colIndex);
-		}
-		catch(IndexOutOfBoundsException &e){
-      		e.what();
-	  	}
       }
-      
       
       int getRow() {return row;}
       int getCol() {return col;}
@@ -205,7 +193,7 @@ int main() {
 		}
 		cout<<endl;
 	}
-	cout<<endl<<arr(10,10);
+	
 
 	return 0; 
 }
