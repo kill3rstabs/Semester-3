@@ -2,7 +2,7 @@
 using namespace std;
 int subArray(){
 	int max =0,curr_sum =0,j=0,n;
-	bool store=true;
+	int store=999999;
 	cin>>n;
 	int arr[n],sub_arr[n];
 	//taking array input
@@ -16,7 +16,7 @@ int subArray(){
 		curr_sum +=arr[i];
 		sub_arr[j]=arr[i];
 		j++;
-		if(max<curr_sum && store){
+		if(max<curr_sum && store<i){
 			j=0;
 		}
 		
