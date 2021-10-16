@@ -1,0 +1,40 @@
+<Food for the Thoughts>
+
+
+Programming Problem
+
+
+You are given two objects of DynamicSafeArray A1 and A2 with n and m elements respectively, both are sorted.  You need to create another instance of DynamicSafeArray that must contains all the common elements of A1 and A2, also in sorted order. You need to add a helping function in your DynamicSafeArray class that decide whether the given instance of it is empty or not.
+
+
+Test Case # 1
+
+A1 = { 1, 2,3,4,5,6,7,8}
+
+A2= {9,10}
+
+Result
+
+A3 ={}
+
+
+Test Case # 2
+
+A1 = { 2,3,4,5}
+
+A2= {2,3,4,5}
+
+Result
+
+A3 ={2,3,4,5}
+
+
+Test Case # 3
+
+A1 = { 1,2,3,4,5}
+
+A2= {2,6,7,8,9}
+
+Result
+
+A3 ={2}
