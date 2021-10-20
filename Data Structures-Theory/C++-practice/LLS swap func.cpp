@@ -132,7 +132,8 @@ int main(){
 	l.addToTail(10);
 	
 	l.display();
-}#include <iostream>
+}
+#include <iostream>
 using namespace std;
 template <class t>
 class Node{
