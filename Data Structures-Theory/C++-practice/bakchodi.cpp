@@ -7,7 +7,7 @@ class Node{
 		Node * next;
 		Node* prev;
 	public:
-		Node(string w):word(w),next(0),prev(0),ascii('n'){}
+		Node(string w):word(w),next(0),prev(0),ascii(' '){}
 		friend class DLL;
 };
 class DLL{
@@ -19,27 +19,24 @@ class DLL{
 			Node* temp = head;
 			Node* n = new Node(w);
 			if(head==NULL){
-				
+
 				head=n;
-				if(n->word[0]>=65 && n->word[0]<=90){
+											if(n->word[0]>=65 && n->word[0]<=90){
 					n->word[0] +=32;
 					n->ascii = 'y';
-				}
+			}
 				return;
 			}
-			if(n->word[0]>=65 && n->word[0]<=90) {
+			while(temp!=NULL){        //check before inserting any dupliacte value
+				if(temp->word==w){
+					return;
+				}
+				temp=temp->next;
+			}
+						if(n->word[0]>=65 && n->word[0]<=90){
 					n->word[0] +=32;
 					n->ascii = 'y';
 			}
-			while(temp!=NULL){        //check before inserting any dupliacte value
-				if(temp->word==n->word){
-					return;
-				}
-				
-				temp=temp->next;
-			}
-			
-			
 			temp=head;
 			while(temp->next!=NULL){
 				temp = temp->next;
@@ -50,7 +47,7 @@ class DLL{
 		void copy(DLL A) {
 		Node *temp = A.head ;
 		while (temp != NULL) {
-			addNode(temp->word);
+			addNode(temp->word) ;
 			temp = temp->next ;
 		}
 	}
@@ -59,14 +56,10 @@ class DLL{
 			Node* temp = head;
 			while(temp!=NULL){
 				if(temp->ascii == 'y'){
-					temp->word[0]-=32;
-				}
+					temp->word[0]-=32;}
 				cout<<temp->word<<endl;
 				temp = temp->next;
 			}
-			
-			
-			
 			
 		}
 //		void uniqueWords(DLL &l2){
@@ -129,8 +122,8 @@ class DLL{
 int main(){
 	DLL L,L2;
 	string s;
-	getline(cin,s);
-	int i=0,j=0;
+	cin>>s;
+	int i=0;
 	string str;	
 	while(i<s.length()){
 		str ="";
@@ -138,11 +131,10 @@ int main(){
 			str += s[i];
 			i++;
 		}
-//		j++;
 		i++;
 		L.addNode(str);
 	}
-//	cout<<j;
+	
 	L.display();
 	
 	return 0;
