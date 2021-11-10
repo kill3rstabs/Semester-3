@@ -109,10 +109,17 @@ class DLL{
 };
 int main(){
 	DLL L,L2;
-	string s;	
-	for(int i=0;i<12;i++){
-		cin>>s;
-		L.addNode(s);
+	string s;
+	cin>>s;
+	int i=0;
+	string str;	
+	while(i<s.length()){
+		str ="";
+		while(s[i]!=' '&&s[i]!='\0'){
+			str += s[i];
+			i++;
+		}
+		L.addNode(str);
 	}
 	
 	L.display();
