@@ -1,70 +1,64 @@
 #include<iostream>
 using namespace std;
 
-class node{
+class Node{
 	public:
+		Node* next;
 		int data;
-		node* next;
 		
-		node()
+		Node()
 		{
-			data = 0;
-			next = NULL;
+			next=NULL;
+			data=0;
 		}
 		
-		node(int d)
+		Node(int d)
 		{
-			data = d;
-			next = 0;
+			next=NULL;
+			data=d;
 		}
 };
 
-class SLL{
+class sll{
+	public:
+		Node* Head;
 	
-		public:
-			node* Head;
 		
-			SLL()
+		
+		sll()
+		{
+			Head = NULL;
+		}
+		
+		void insertinBW(int d, int k)
+		{
+			int count = 0;
+			Node* temp = Head;
+//			Node* current;
+			Node* newNode = new Node(d); //parameterized constructor called
+			
+			while(count!=k)
 			{
-				Head=NULL;
+				temp = temp->next;
+				count++;
 			}
 			
-			void appendNode(int d)
-			{
-				node* temp = Head;
-				node* newNode = new node(d);
-				
-				if(Head==NULL)
-				{
-					Head = newNode;
-					return;
-				}
-				else
-				{
-					//head ko point karao newnode pr or new node k next ko point karao temp pr bec temp is pointing where head was pointing before(1st node)
-					Head=newNode;
-					newNode->next = temp;
-					temp = Head;
-				}
-			}
-			
-			void display()
-			{
-				node* temp = Head;
-			
-				while(temp != NULL)
-				{
-					cout << temp->data<<"->";
-					temp = temp->next;
-				}
-				cout<<"NULL";
-			}	
+//			if(count==k)
+//			{
+//				newNode->next=temp->next;
+//				temp->next = newNode;
+//				cout << "\n\nSuccessfully inserted.";
+//			}
+//			else
+//			{
+//				cout << "\n\noperation unsuccessful";
+//			}
+		}
 };
+
 
 int main()
 {
-	SLL ob1;
-	ob1.appendNode(3);
-	ob1.appendNode(2);
-	ob1.display();
+	sll n;
+	n.insertinBW(2,1);
 }
