@@ -1,127 +1,186 @@
 #include <iostream>
+
 using namespace std;
+
+void input(){
+	
+    
+}
 class Node{
-	private:
-		Node* next;
-		char var;
-		int coff;
-		int power;
-	public:
-		Node():next(0),var(' '),coff(0),power(0){}
-		Node(int c,char v,int p):next(0),var(v),power(p),coff(c){}
-		friend class SLL;
+    friend class list;
+    int cof;
+    char var;
+    int expo;
+    Node* next;
+    public:
+        Node(int cof, char var, int expo){
+            this->cof=cof;
+            this->var=var;
+            this->expo=expo;
+            this->next=NULL;
+        }
 };
-class SLL{
-	private:
-		Node* head;
-		Node* tail;
-	public:
-		SLL():head(NULL),tail(NULL){}
-		void addNode(int c,char v,int p){
-			Node* newnode = new Node(c,v,p);
-			Node* temp = tail;
-			if(head==NULL){
-				head=newnode;
-				tail = newnode;
-				return;
-			}
-			temp->next = newnode;
-			tail = newnode;
+
+class list{
+  Node* head;
+  
+  public:
+    list(){head=NULL;}
+    
+    void add_node(int cof, char var, int expo){
+        Node* new_node= new Node(cof,var,expo);
+        
+        if(head==0){
+            head=new_node;
+        }
+        else{
+            Node* curr=head;
+            while(curr->next!=0){
+                curr=curr->next;
+            }
+            curr->next=new_node;
+        }
+    }
+    
+    void addition(list& L2){
+        Node* curr=this->head;
+        Node* temp=L2.head;
+        bool flag= false;
+        while(curr!=0){
+            temp=L2.head;
+            flag=false;
+            while(temp!=0){
+            if(curr->expo==temp->expo && curr->var==temp->var){
+                temp->cof=curr->cof+temp->cof;
+                flag=true;
+                break;
+            }
+            temp=temp->next;
+            }
+            if(flag==false){
+                L2.add_node(curr->cof,curr->var,curr->expo);
+            }
+            curr=curr->next;
+    }
+    	L2.sort();
+        L2.display();
+}
+	int count_node(){
+		int count=0;
+		Node* curr=head;
+		while(curr!=0){
+			count++;
+			curr=curr->next;
 		}
-		void input(){
-			
-		}
-		SLL& operator+(SLL &rhs){
-			Node* temp = head;
-			Node* temp2 ;
-			int flag = 0;
-			while(temp!=NULL){
-				flag = 0;
-				temp2 = rhs.head;
-				while(temp2!=NULL && flag==0){
-					if(temp->var == temp2->var && temp->power == temp2->power){
-						temp2->coff=temp2->coff+temp->coff;
-						flag =1;
-					}
-					temp2 = temp2->next;	
-				}
-				if(flag==0){
-					rhs.addNode(temp->coff,temp->var,temp->power);
-					
-				}
-				temp = temp->next;
-			}
-			return rhs;
-		}
-		void sort(){
-			Node* temp = head;
-			Node* temp2 = head;
-			int d,c;
-			char v;
-			while(temp->next!=NULL){
-				while(temp2->next!=NULL){
-					if(temp2->power>temp2->next->power){
-						d = temp2->power;
-						temp2->power = temp2->next->power;
-						temp2->next->power = d;
-						
-						c = temp2->coff;
-						temp2->coff = temp2->next->coff;
-						temp2->next->coff = c;
-						
-						v = temp2->var;
-						temp2->var = temp2->next->var;
-						temp2->next->var = v;
-					}
-					temp2 = temp2->next;
-				}
-				temp = temp->next;
-			}
-		}
-		int count(){
-			Node* temp = head;
-			int count = 1;
-			while(temp->next!=NULL){
-				count++;
-				temp=temp->next;
+		return count;
+	}
+    void copy(const list &original){
+		
+//		 size = original.size;
+		 Node *firstPtr = 0;
+		 Node*ptr = original.head;
+		 Node *newPtr, *lastPtr;
+		 while (ptr != 0) {
+		 // create a new node with the value in it.
+//		 newPtr = new Node();
+//		 assert(newPtr != 0);
+		 if(firstPtr == 0)
+		 firstPtr = newPtr; // first node
+		 else
+//		 lastPtr->nextPtr = newPtr; // set up last link
+		 lastPtr = newPtr; // save last ptr
+//		 ptr = ptr->nextPtr; // move up ptr 
+	}}
+    void display(){
+        Node* curr=head;
+        cout<<endl;
+        cout<<count_node()<<endl;
+        while(curr!=0){
+            
+			cout<<curr->cof;
+            cout<<" "<<curr->var;
+            cout<<" "<<curr->expo;
+			cout<<endl;
+			curr=curr->next;
+    }
+}
+void sort(){
+		Node* curr=head;
+		Node* temp;
+		Node* temp2;
+		int tempvar=0;
+		char tempchar;
+		while(curr!=0){
+			temp=curr->next;
+			while(temp!=0){
 				
+				if(curr->expo>temp->expo){
+					tempvar=curr->expo;
+					curr->expo=temp->expo;
+					temp->expo=tempvar;
+
+					tempchar=curr->var;
+					curr->var=temp->var;
+					temp->var=tempchar;
+
+					
+					tempvar=curr->cof;
+					curr->cof=temp->cof;
+					temp->cof=tempvar;					
+				}
+				temp=temp->next;	
 			}
-			return count;
-		}
-		void display(){
-			sort();
-			Node* temp = head;
-			do{
-				cout<<temp->coff<<" "<<temp->var<<" "<<temp->power<<" "<<endl;
-				temp =temp->next;
-			}while(temp!=NULL);
+			curr=curr->next;
+			}
 			
-		}	
+			curr=head;
+			temp=curr->next;
+			while(curr!=0){
+			temp=curr->next;
+				while(temp!=0){
+				
+				if(curr->var>temp->var){
+					tempvar=curr->expo;
+					curr->expo=temp->expo;
+					temp->expo=tempvar;
+
+					tempchar=curr->var;
+					curr->var=temp->var;
+					temp->var=tempchar;
+
+					
+					tempvar=curr->cof;
+					curr->cof=temp->cof;
+					temp->cof=tempvar;					
+				}
+				temp=temp->next;	
+			}
+			curr=curr->next;
+			}
+		}        
+    
 };
-
-int main(){
- int n,c,p;
-	char v;
-	SLL L1,L2,L3;		
+int main() {
+	int n,cof,e;
+    char var;
+    list L1,L2;
 	cin>>n;
-	for(int i=0;i<n;i++){
-		cin>>c;
-		cin>>v;
-		cin>>p;
-		L1.addNode(c,v,p);
-	}	
-	
-	cin>>n;
-	for(int i=0;i<n;i++){
-		cin>>c;
-		cin>>v;
-		cin>>p;
-		L2.addNode(c,v,p);
-	}		
-	L3 = L1+L2;	//zindagi sey koi shikwa tou nahi hai 
-	
-	cout<<L3.count()<<endl;
-	L3.sort();
-	L3.display();
+    for(int i=0; i<n; i++){
+    cin>>cof;
+    cin>>var;
+    cin>>e;
+    L1.add_node(cof,var,e);
+    }
+    cout<<endl;
+    cin>>n;
+    for(int i=0; i<n; i++){
+    cin>>cof;
+    cin>>var;
+    cin>>e;
+    L2.add_node(cof,var,e);
+    }
 
+    L1.addition(L2);
+    
+	return 0; 
 }
