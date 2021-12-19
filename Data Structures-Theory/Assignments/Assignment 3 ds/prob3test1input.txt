@@ -1,0 +1,15 @@
+9
+machine learning
+computer
+machine
+learning
+algorithm
+supervised
+data
+training
+training example
+001 machine learning is the science of training computer to act without being explicitly programmed
+002 neural network is a popular machine learning algorithm
+003 neural network perform learning by using supervised data
+004 via neural network algorithm computer acts like human brain
+005 supervised data mean for each training example output is known
