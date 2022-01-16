@@ -1,10 +1,12 @@
+
+
 #include <iostream>
 using namespace std;
 
 template <class T>
 void merge(T arr[],int lb,int mid,int ub){
 	int i = lb,j = mid+1,k = lb,b[ub];
-	while(i<= mid && j<=ub){
+	while(i<= mid && j<=ub){	
 		if(arr[i]<=arr[j]){
 			b[k]=arr[i];
 			i++;
@@ -39,7 +41,7 @@ u* mergeSort(u arr[],int lb,int ub){
 		mergeSort(arr,mid+1,ub);
 		merge(arr,lb,mid,ub);
 	}
-	return *arr;
+	return arr;
 	
 }
 

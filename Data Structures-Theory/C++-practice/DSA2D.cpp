@@ -1,5 +1,5 @@
-#include <iostream>
-#include <exception>
+#include <bits/stdc++.h>
+
 using namespace std;
 
 class IndexOutOfBoundException: public exception{
